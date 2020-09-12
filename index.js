@@ -1,6 +1,8 @@
-const express = require('express')
+const server = require('./server')
+const { HOST, PORT} = require('./config')
 
-const app = express()
-const PORT = 3000
 
-app.listen(PORT)
+server.listen(PORT, HOST, (err) => {
+  if(err) console.error(err)
+  console.info(`REST API started on http://${HOST}:${PORT}`)
+})
