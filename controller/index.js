@@ -27,7 +27,13 @@ async function handleVersionSecurity(req, res) {
       }
       return list;
     }, []);
-    res.status(200).send(filteredList);
+    const data = [];
+    filteredList.forEach((e) => {
+      fetchedVersions.map((v) => {
+        return e.version === semver.clean(v.version) ? data.push(v) : null;
+      });
+    });
+    res.status(200).send(data);
   } catch (error) {
     res.status(400).send({
       code: 400,
@@ -59,7 +65,13 @@ async function handleLatestReleases(req, res) {
       }
       return list;
     }, []);
-    res.status(200).send(filteredList);
+    const data = [];
+    filteredList.forEach((e) => {
+      fetchedVersions.map((v) => {
+        return e.version === semver.clean(v.version) ? data.push(v) : null;
+      });
+    });
+    res.status(200).send(data);
   } catch (error) {
     res.status(400).send({
       code: 400,
