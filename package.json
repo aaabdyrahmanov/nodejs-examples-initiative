@@ -9,6 +9,8 @@
 	"scripts": {
 		"start": "node index",
 		"dev": "nodemon index",
+		"format": "prettier --write .",
+		"lint": "eslint --ext .js --ignore-path .gitignore ./test",
 		"test": "tape test/*.js"
 	},
 	"repository": {
