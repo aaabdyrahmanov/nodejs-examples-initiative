@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const compression = require('compression')
 const helmet = require('helmet')
 const morgan = require('morgan')
+var hbs = require('express-handlebars');
 
 const app = express()
 
@@ -11,7 +12,7 @@ const app = express()
 app.use(
   cors({
     origin: '*',
-    optionsSuccessStatus: 200, 
+    optionsSuccessStatus: 200,
     methods: ['GET'],
     allowedHeaders: [
       'Accept',
@@ -19,6 +20,13 @@ app.use(
     ]
   })
 )
+
+// set view engine as html
+app.engine('handlebars', 
+  hbs({ defaultLayout: 'main' })
+)
+
+app.set('view engine', 'handlebars');
 
 // security headers middleware
 app.use(helmet())
@@ -34,5 +42,7 @@ app.use(morgan('dev'))
 // compacting requests using GZIP middleware
 app.use(compression())
 
+// import Routes
+require('../routes')(app)
 
 module.exports = app
