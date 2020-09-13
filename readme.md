@@ -156,3 +156,7 @@
 3. Set the origin of the clone to the url of the previous step: `git remote set-url origin ${your repo url}`
 4. Solve the challenge
 5. Push your changes
+
+## License
+
+This project licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
