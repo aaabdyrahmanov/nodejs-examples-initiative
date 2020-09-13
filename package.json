@@ -7,9 +7,9 @@
 		"test": "test"
 	},
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "node index",
-		"dev": "nodemon index"
+		"dev": "nodemon index",
+		"test": "tape test/*.js"
 	},
 	"repository": {
 		"type": "git",
