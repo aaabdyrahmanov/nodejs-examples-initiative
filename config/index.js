@@ -1,14 +1,14 @@
 // import environment variables
 require("dotenv").config();
 
-const NODE_ENV = process.env.NODE_ENV;
-const HOST = process.env.HOST;
-const PORT = process.env.PORT;
-const NODEJS_VERSIONS_API = process.env.NODEJS_VERSIONS_API;
+const { NODE_ENV } = process.env;
+const { HOST } = process.env;
+const { PORT } = process.env;
+const { NODE_VERSIONS_API } = process.env;
 
 module.exports = {
   NODE_ENV,
   HOST,
   PORT,
-  NODEJS_VERSIONS_API,
+  NODE_VERSIONS_API,
 };

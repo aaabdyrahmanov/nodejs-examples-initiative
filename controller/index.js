@@ -1,13 +1,13 @@
 const semver = require("semver");
 const bent = require("bent");
-const { NODEJS_VERSIONS_API } = require("../config");
+const { NODE_VERSIONS_API } = require("../config");
 
 const getJSON = bent("json");
 
 async function handleVersionSecurity(req, res) {
   const versionList = [];
   try {
-    const fetchedVersions = await getJSON(NODEJS_VERSIONS_API);
+    const fetchedVersions = await getJSON(NODE_VERSIONS_API);
     fetchedVersions
       .filter((version) => version.security === true)
       .forEach((element) => {
@@ -46,7 +46,7 @@ async function handleVersionSecurity(req, res) {
 async function handleLatestReleases(req, res) {
   const versionList = [];
   try {
-    const fetchedVersions = await getJSON(NODEJS_VERSIONS_API);
+    const fetchedVersions = await getJSON(NODE_VERSIONS_API);
     fetchedVersions.forEach((element) => {
       const item = {};
       item.major = semver.major(element.version);
