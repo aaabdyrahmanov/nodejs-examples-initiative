@@ -1,11 +1,10 @@
-const router = require('express').Router()
-const { handleVersionSecurity: securityHandler } = require('../controller')
-
+const router = require("express").Router();
+const { handleVersionSecurity: securityHandler } = require("../controller");
 
 /**
- * GET /minimum-secure 
+ * GET /minimum-secure
  */
 
-router.get('/', securityHandler)
+router.get("/", securityHandler);
 
-module.exports = router
+module.exports = router;

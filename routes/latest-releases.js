@@ -1,11 +1,10 @@
-const router = require('express').Router()
-const { handleLatestReleases: latestReleases } = require('../controller')
-
+const router = require("express").Router();
+const { handleLatestReleases: latestReleases } = require("../controller");
 
 /**
- * GET /latest-release 
+ * GET /latest-release
  */
 
-router.get('/', latestReleases)
+router.get("/", latestReleases);
 
-module.exports = router
+module.exports = router;
