@@ -1,25 +1,14 @@
 const semver = require("semver");
 const bent = require("bent");
-const { dependencies } = require("../package.json");
 const { NODE_VERSIONS_API } = require("../config");
 
 const getJSON = bent("json");
 
-async function getDependencyList(req, res) {
+function getDependencyList(req, res) {
   try {
-    const dependencyList = [];
-    // parse and turn the dependency list on usable data
-    Object.entries(dependencies).forEach(([key, value], index) => {
-      const item = {};
-      item.index = index + 1;
-      item.name = key;
-      item.version = value;
-      dependencyList.push(item);
-    });
-    await Promise.all(dependencyList);
-    console.info("Imported dependency list successfully");
+    const fetchedDependencies = fetchDependencies();
 
-    res.status(200).render("home", { packages: dependencyList });
+    return res.status(200).render("home", { packages: fetchedDependencies });
   } catch (error) {
     res.status(400).send({
       code: 400,
