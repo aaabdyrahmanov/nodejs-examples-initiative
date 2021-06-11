@@ -19,7 +19,7 @@ async function getDependencyList(req, res) {
     await Promise.all(dependencyList);
     console.info("Imported dependency list successfully");
 
-    res.status(200).render("main", { packages: dependencyList });
+    res.status(200).render("home", { packages: dependencyList });
   } catch (error) {
     res.status(400).send({
       code: 400,
