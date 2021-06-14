@@ -1,18 +1,15 @@
 const tape = require("tape");
 const bent = require("bent");
 const semver = require("semver");
-const getPort = require("get-port");
-const getHost = require("get-host");
+const getBuffer = bent("buffer");
 
 const server = require("../server");
 
-const getBuffer = bent("buffer");
-
+const PORT = process.env.PORT;
+const HOST = process.env.HOST;
 const context = {};
 
 tape("setup", async (t) => {
-  const PORT = await getPort();
-  const HOST = await getHost();
   context.server = server.listen(PORT);
   context.origin = `http://${HOST}:${PORT}`;
 
